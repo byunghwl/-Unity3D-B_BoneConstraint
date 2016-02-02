@@ -19,6 +19,8 @@ public class boneConstraint : MonoBehaviour
 	
 	void Update () 
 	{
+
+		//boneTransform.LookAt(targetTransform );
 		if (Input.GetKeyDown(KeyCode.A)) { /* Send Event */
 			StartToFollow();
 		}
@@ -54,7 +56,7 @@ public class boneConstraint : MonoBehaviour
 		while (time < 1.5f) {
 			time += Time.deltaTime;
 			boneTransform.rotation = Quaternion.Slerp (quatA, quatB, time);
-			yield return null;
+			yield return new WaitForEndOfFrame();
 		}
 
 		if (isConstraintMode) {
@@ -68,7 +70,7 @@ public class boneConstraint : MonoBehaviour
 		while (true)
 		{
 			boneTransform.LookAt(targetTransform);
-			yield return null;
+			yield return new WaitForEndOfFrame();
 		}
 
 	}
